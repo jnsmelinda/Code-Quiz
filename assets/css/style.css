@@ -1,0 +1,20 @@
+button {
+    margin-top: 20px;
+    border: none;
+}
+
+section {
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.lead {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
