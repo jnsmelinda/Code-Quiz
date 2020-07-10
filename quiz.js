@@ -5,19 +5,15 @@ var timerStarted = "true";
 
 
 function startTime() {
-  // TODO: check if timer has started and do nothing if so
-
   if (timerStarted === "true") {
     var timerInterval = setInterval(function () {
-
-      secondsLeft--;
-      timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+      timeEl.textContent = secondsLeft + " seconds left.";
 
       if (secondsLeft <= 0) {
         clearInterval(timerInterval);
         timerStarted = "false";
       }
-
+      secondsLeft--;
     }, 1000);
   }
 }
