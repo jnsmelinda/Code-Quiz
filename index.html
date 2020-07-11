@@ -11,6 +11,16 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <div>
+                <p id="countDown">10</p>
+            </div>
+            <ul>
+                <a href="index.html">HighScores</a>
+            </ul>
+        </nav>
+    </header>
     <main>
         <section>
             <div class="jumbotron jumbotron-fluid">
@@ -23,20 +33,22 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <p id="rules">Rules....etc.</p>
-                            <p id="countDown">10</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <button type="button" class="btn btn-primary btn-lg" id="startQuiz">Start The Quiz</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-primary btn-lg" id="startQuiz">Start The Quiz</button>
+                </div>
+            </div>
+            </div>
         </section>
         <section>
             <article>
                 <h2 id="question"></h2>
                 <div id="buttons"></div>
+                <h3 id="score"></h3>
                 <p id="result"></p>
             </article>
         </section>
