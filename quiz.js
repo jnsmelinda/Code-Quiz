@@ -1,8 +1,8 @@
-const questions = [
+const challenges = [
     {
         question: "123?",
         answers: [
-            "a", "b", "c", "d"
+            "a", "b", "c", "d", "e"
         ],
         correctAnswer: 2
     },
@@ -26,7 +26,7 @@ function startGame() {
     if (started === false) {
         started = true;
 
-        displayQuestion(0);
+        displayChallenge(0);
 
         timerInterval = setInterval(function () {
             if (secondsLeft > 0) {
@@ -43,25 +43,30 @@ function startGame() {
     }
 }
 
-function displayQuestion(questionIndex) {
-    const question = document.getElementById("question");
-    question.textContent = questions[questionIndex].question;
+function displayChallenge(challengeIndex) {
+    const challenge = challenges[challengeIndex];
+    document.getElementById("question").textContent = challenge.question;
 
-    for (let i = 0; i < 4; i++) {
-        const answer = document.getElementById(`answer-${i}`);
-        answer.textContent = questions[questionIndex].answers[i];
-        answer.onclick = () => markAnswer(questionIndex, i);
+    document.getElementById("buttons").innerHTML = "";
+    for (let i = 0; i < challenge.answers.length; i++) {
+        const button = document.createElement("button");
+        button.setAttribute("id", `answer-${i}`);
+        button.setAttribute("class", "btn btn-primary btn-sm");
+        button.textContent = challenge.answers[i];
+        button.onclick = () => markAnswer(challengeIndex, i);
+
+        document.getElementById("buttons").appendChild(button);
     }
 }
 
-function markAnswer(questionIndex, answerIndex) {
-    alert(questions[questionIndex].correctAnswer === answerIndex ? "correct" : "incorrect");
-    questionIndex++;
-    if (questionIndex === questions.length) {
+function markAnswer(challengeIndex, answerIndex) {
+    alert(challenges[challengeIndex].correctAnswer === answerIndex ? "correct" : "incorrect");
+    challengeIndex++;
+    if (challengeIndex === challenges.length) {
         gameOver();
     }
     else {
-        displayQuestion(questionIndex);
+        displayChallenge(challengeIndex);
     }
 }
 
