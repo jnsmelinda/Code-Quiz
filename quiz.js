@@ -29,6 +29,8 @@ let started = false;
 let timerInterval;
 let score = 0;
 
+let highScore = new Array();
+
 function startGame() {
     if (started === false) {
         started = true;
