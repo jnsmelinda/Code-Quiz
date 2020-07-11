@@ -15,16 +15,16 @@ const questions = [
     }
 ]
 
-document.getElementById("startQuiz").addEventListener("click", startTime);
+document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
 let secondsLeft = 10;
-let timerStarted = false;
+let started = false;
 let timerInterval;
 let score = 0;
 
-function startTime() {
-    if (timerStarted === false) {
-        timerStarted = true;
+function startGame() {
+    if (started === false) {
+        started = true;
 
         displayQuestion(0);
 
@@ -38,7 +38,7 @@ function startTime() {
                 secondsLeft--;
             }
             else {
-                displayGameOver();
+                gameOver();
             }
         }, 1000);
     }
@@ -59,14 +59,13 @@ function markAnswer(questionIndex, answerIndex) {
     alert(questions[questionIndex].correctAnswer === answerIndex ? "correct" : "incorrect");
     questionIndex++;
     if (questionIndex === questions.length) {
-        displayGameOver();
+        gameOver();
     }
     else {
         displayQuestion(questionIndex);
     }
 }
 
-function displayGameOver() {
-    alert("game over");
+function gameOver() {
     clearInterval(timerInterval);
 }
