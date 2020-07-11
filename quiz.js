@@ -24,6 +24,7 @@ const challenges = [
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
+let button;
 let secondsLeft = 10;
 let started = false;
 let timerInterval;
@@ -66,20 +67,18 @@ function displayChallenge(challengeIndex) {
 
 function markAnswer(challengeIndex, answerIndex) {
     let resultOfPrevQuestion = document.getElementById("result");
-    // alert(challenges[challengeIndex].correctAnswer === answerIndex ? "correct" : "incorrect");
 
     if (challenges[challengeIndex].correctAnswer === answerIndex) {
-        resultOfPrevQuestion.textContent = "Correct";
+        resultOfPrevQuestion.textContent = "Previous: Correct";
         score++;
     }
     else {
-        resultOfPrevQuestion.textContent = "Incorrect";
+        resultOfPrevQuestion.textContent = "Previous: Incorrect";
         secondsLeft -= 3;
     }
 
     challengeIndex++;
-    document.getElementById("question").textContent = "";
-    document.getElementById("buttons").innerHTML = "";
+    resetChallenge();
     if (challengeIndex === challenges.length) {
         gameOver();
     }
@@ -89,7 +88,16 @@ function markAnswer(challengeIndex, answerIndex) {
 }
 
 function gameOver() {
-    document.getElementById("question").textContent = "Score: " + score;
     clearInterval(timerInterval);
-    
+    resetChallenge();
+    displayScore();
 }
+
+function displayScore() {
+    document.getElementById("question").textContent = "Score: " + score;
+}
+
+function resetChallenge() {
+    document.getElementById("buttons").innerHTML = "";
+}
+
