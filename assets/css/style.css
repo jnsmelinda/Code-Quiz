@@ -1,6 +1,10 @@
 button {
-    margin-top: 20px;
-    border: none;
+
+  border: none;
+}
+
+.row {
+  text-align: center;
 }
 
 section {
