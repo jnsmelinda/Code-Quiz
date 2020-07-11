@@ -50,8 +50,8 @@ function displayChallenge(challengeIndex) {
     document.getElementById("buttons").innerHTML = "";
     for (let i = 0; i < challenge.answers.length; i++) {
         const button = document.createElement("button");
-        button.setAttribute("id", `answer-${i}`);
-        button.setAttribute("class", "btn btn-primary btn-sm");
+        button.id = `answer-${i}`;
+        button.classList = "btn btn-primary btn-sm";
         button.textContent = challenge.answers[i];
         button.onclick = () => markAnswer(challengeIndex, i);
 
