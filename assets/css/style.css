@@ -10,3 +10,24 @@ p {
     font-size: 20px;
 }
 
+#countDown {
+    font-size: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.nav-item {
+    float: right;
+}
+
+nav ul {
+    list-style-type: none;
+    font-size: 20px;
+    padding-top: 15px;
+    margin-right: 20px;
+  }
+
+  nav ul li {
+    display: inline-block;
+    margin-left: 25px;
+  }
