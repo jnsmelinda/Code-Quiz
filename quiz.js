@@ -29,7 +29,7 @@ function startTime() {
     displayQuestion(0);
 
     let timerInterval = setInterval(function () {
-      
+
 
       if (secondsLeft <= 5) {
         timeEl.style.color = "red";
