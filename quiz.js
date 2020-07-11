@@ -29,13 +29,12 @@ function startGame() {
         displayQuestion(0);
 
         timerInterval = setInterval(function () {
-
-            if (secondsLeft <= 5) {
-                countDownElement.style.color = "red";
-            }
-            if (secondsLeft >= 0) {
-                countDownElement.textContent = secondsLeft;
+            if (secondsLeft > 0) {
                 secondsLeft--;
+                countDownElement.textContent = secondsLeft;
+                if (secondsLeft <= 5) {
+                    countDownElement.style.color = "red";
+                }
             }
             else {
                 gameOver();
