@@ -24,7 +24,6 @@ const challenges = [
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
-let question = document.getElementById("question");
 let secondsLeft = 10;
 let started = false;
 let timerInterval;
@@ -54,7 +53,8 @@ function startGame() {
 
 function displayChallenge(challengeIndex) {
     const challenge = challenges[challengeIndex];
-    question.textContent = challenge.question;
+    document.getElementById("question").textContent = challenge.question;
+
 
     for (let i = 0; i < challenge.answers.length; i++) {
         const button = document.createElement("button");
@@ -89,6 +89,7 @@ function markAnswer(challengeIndex, answerIndex) {
 
 function gameOver() {
     clearInterval(timerInterval);
+    countDownElement.textContent = "0";
     resetChallenge();
     displayScore();
 }
@@ -99,6 +100,5 @@ function displayScore() {
 
 function resetChallenge() {
     document.getElementById("buttons").innerHTML = "";
-    question.remove();
-    countDownElement.textContent = "0";
+    document.getElementById("question").innerHTML = "";
 }
