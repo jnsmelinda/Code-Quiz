@@ -24,7 +24,7 @@ const challenges = [
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
-let button;
+let question = document.getElementById("question");
 let secondsLeft = 10;
 let started = false;
 let timerInterval;
@@ -33,6 +33,7 @@ let score = 0;
 function startGame() {
     if (started === false) {
         started = true;
+        document.getElementById("startQuiz").remove();
 
         displayChallenge(0);
 
@@ -53,7 +54,7 @@ function startGame() {
 
 function displayChallenge(challengeIndex) {
     const challenge = challenges[challengeIndex];
-    document.getElementById("question").textContent = challenge.question;
+    question.textContent = challenge.question;
 
     for (let i = 0; i < challenge.answers.length; i++) {
         const button = document.createElement("button");
@@ -67,7 +68,6 @@ function displayChallenge(challengeIndex) {
 
 function markAnswer(challengeIndex, answerIndex) {
     let resultOfPrevQuestion = document.getElementById("result");
-
     if (challenges[challengeIndex].correctAnswer === answerIndex) {
         resultOfPrevQuestion.textContent = "Previous: Correct";
         score++;
@@ -94,10 +94,11 @@ function gameOver() {
 }
 
 function displayScore() {
-    document.getElementById("question").textContent = "Score: " + score;
+    document.getElementById("score").textContent = "Score: " + score;
 }
 
 function resetChallenge() {
     document.getElementById("buttons").innerHTML = "";
+    question.remove();
+    countDownElement.textContent = "0";
 }
-
