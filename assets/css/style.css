@@ -1,24 +1,9 @@
-button {
+body {
+  text-align: center;
+}
 
+button {
   border: none;
 }
 
-.row {
-  text-align: center;
-}
 
-section {
-  align-items: center;
-}
-
-h1 {
-  text-align: center;
-}
-
-.lead {
-  text-align: center;
-}
-
-p {
-  text-align: center;
-}
