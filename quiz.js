@@ -12,6 +12,13 @@ const challenges = [
             "1", "2", "3", "4"
         ],
         correctAnswer: 0
+    },
+    {
+        question: "hgf?",
+        answers: [
+            "#", "@", "!", "%"
+        ],
+        correctAnswer: 0
     }
 ]
 
@@ -47,21 +54,32 @@ function displayChallenge(challengeIndex) {
     const challenge = challenges[challengeIndex];
     document.getElementById("question").textContent = challenge.question;
 
-    document.getElementById("buttons").innerHTML = "";
     for (let i = 0; i < challenge.answers.length; i++) {
         const button = document.createElement("button");
-        button.id = `answer-${i}`;
+        button.id = "answer-" + i;
         button.classList = "btn btn-primary btn-sm";
         button.textContent = challenge.answers[i];
         button.onclick = () => markAnswer(challengeIndex, i);
-
         document.getElementById("buttons").appendChild(button);
     }
 }
 
 function markAnswer(challengeIndex, answerIndex) {
-    alert(challenges[challengeIndex].correctAnswer === answerIndex ? "correct" : "incorrect");
+    let resultOfPrevQuestion = document.getElementById("result");
+    // alert(challenges[challengeIndex].correctAnswer === answerIndex ? "correct" : "incorrect");
+
+    if (challenges[challengeIndex].correctAnswer === answerIndex) {
+        resultOfPrevQuestion.textContent = "Correct";
+        score++;
+    }
+    else {
+        resultOfPrevQuestion.textContent = "Incorrect";
+        secondsLeft -= 3;
+    }
+
     challengeIndex++;
+    document.getElementById("question").textContent = "";
+    document.getElementById("buttons").innerHTML = "";
     if (challengeIndex === challenges.length) {
         gameOver();
     }
@@ -71,5 +89,7 @@ function markAnswer(challengeIndex, answerIndex) {
 }
 
 function gameOver() {
+    document.getElementById("question").textContent = "Score: " + score;
     clearInterval(timerInterval);
+    
 }
