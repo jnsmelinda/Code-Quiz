@@ -30,6 +30,7 @@ let saveButton = document.getElementById("saveButton").addEventListener("click",
 let highScoreTable = document.getElementById("highScoreTable");
 highScoreTable.style.display = "none";
 document.getElementById("showScores").addEventListener("click", displayHighScores);
+// document.getElementById("showScores").addEventListener("click", highScores);
 
 let secondsLeft = 10;
 let started = false;
@@ -41,6 +42,8 @@ let highScoreList = JSON.parse(localStorage.getItem("highScore")) || [];
 function startGame() {
     if (started === false) {
         started = true;
+        highScoreTable.style.display = "none";
+        highScoreTable.innerHTML = "";
         document.getElementById("startQuiz").remove();
 
         displayChallenge(0);
@@ -132,18 +135,28 @@ function saveScore(event) {
 }
 
 function displayHighScores() {
-    highScoreTable.style.display = "block";
+    if (highScoreTable.style.display === "none") {
+        highScoreTable.style.display = "block";
+        highScoreList.sort((a, b) => b.score - a.score);
 
-    highScoreList.sort((a, b) => b.score - a.score);
+        let highScoreTitle = document.createElement("h3");
+        highScoreTitle.textContent = "High Score Table";
 
-    for (var i = 0; i < highScoreList.length; i++) {
-        let scoreTableRow = highScoreList[i];
+        for (var i = 0; i < highScoreList.length; i++) {
+            let scoreTableRow = highScoreList[i];
 
-        let row = document.createElement("li");
-        row.textContent = scoreTableRow.name + " " + scoreTableRow.score;
-        row.setAttribute("data-index", i);
+            let row = document.createElement("li");
+            row.textContent = scoreTableRow.name + " " + scoreTableRow.score;
+            row.setAttribute("data-index", i);
 
-        highScoreTable.appendChild(row);
+            highScoreTable.appendChild(row);
+        }
+
+        highScoreTable.prepend(highScoreTitle);
+    }
+    else {
+        highScoreTable.style.display = "none";
+        highScoreTable.innerHTML = "";
     }
 }
 
