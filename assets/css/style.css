@@ -16,9 +16,8 @@ form {
     display: inline-block;
 }
 
-#countDown {
+.countDownContainer {
     font-size: 30px;
-    margin-top: 5px;
     margin-left: 10px;
 }
 

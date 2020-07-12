@@ -29,7 +29,7 @@ highScoreInput.style.display = "none";
 let saveButton = document.getElementById("saveButton").addEventListener("click", saveScore);
 let highScoreTable = document.getElementById("highScoreTable");
 highScoreTable.style.display = "none";
-document.getElementById("gamePage").addEventListener("click", startGame);
+document.getElementById("showScores").addEventListener("click", displayHighScores);
 
 let secondsLeft = 10;
 let started = false;
