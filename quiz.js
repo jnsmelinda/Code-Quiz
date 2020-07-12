@@ -24,12 +24,18 @@ const challenges = [
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
+let highScoreInput = document.getElementById("currentScore");
+highScoreInput.style.display = "none";
+let saveButton = document.getElementById("saveButton").addEventListener("click", saveScore);
+let highScoreTable = document.getElementById("highScoreTable");
+highScoreTable.style.display = "none";
+
 let secondsLeft = 10;
 let started = false;
 let timerInterval;
 let score = 0;
 
-let highScore = new Array();
+let highScore = JSON.parse(localStorage.getItem("highScore")) || [];
 
 function startGame() {
     if (started === false) {
@@ -94,6 +100,7 @@ function gameOver() {
     countDownElement.textContent = "0";
     resetChallenge();
     displayScore();
+    displayScoreInput();
 }
 
 function displayScore() {
@@ -104,3 +111,22 @@ function resetChallenge() {
     document.getElementById("buttons").innerHTML = "";
     document.getElementById("question").innerHTML = "";
 }
+
+function displayScoreInput() {
+    highScoreInput.style.display = "block";
+}
+
+function saveScore(event) {
+    event.preventDefault();
+    console.log(event);
+
+    let player = {
+        name: document.getElementById("playerName").value.trim(),
+        score: score
+    }
+
+    highScore.push(player);
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+}
+
+// todo: save on enter

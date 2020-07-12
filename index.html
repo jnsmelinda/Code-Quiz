@@ -57,18 +57,18 @@
                 <p id="result"></p>
             </article>
         </section>
-        <section>
+        <section id="currentScore">
             <form>
-                <h3></h3>
-                <div class="form-row">
-                  <div class="col-7">
-                    <input type="text" class="form-control" placeholder="Name">
-                  </div>
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Score">
-                  </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Enter name to save</label>
+                    <input type="text" class="form-control" id="playerName" placeholder="Example input">
+                    <button type="button" class="btn btn-primary" id="saveButton">Save</button>
                 </div>
             </form>
+        </section>
+        <section id="highScoreTable">
+            <h3>Highscore Table</h3>
+            <ul id="todo-list"></ul>
         </section>
     </main>
     <script src="./quiz.js"></script>
