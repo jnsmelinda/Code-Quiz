@@ -29,13 +29,14 @@ highScoreInput.style.display = "none";
 let saveButton = document.getElementById("saveButton").addEventListener("click", saveScore);
 let highScoreTable = document.getElementById("highScoreTable");
 highScoreTable.style.display = "none";
+document.getElementById("gamePage").addEventListener("click", startGame);
 
 let secondsLeft = 10;
 let started = false;
 let timerInterval;
 let score = 0;
 
-let highScore = JSON.parse(localStorage.getItem("highScore")) || [];
+let highScoreList = JSON.parse(localStorage.getItem("highScore")) || [];
 
 function startGame() {
     if (started === false) {
@@ -125,8 +126,25 @@ function saveScore(event) {
         score: score
     }
 
-    highScore.push(player);
-    localStorage.setItem("highScore", JSON.stringify(highScore));
+    highScoreList.push(player);
+    localStorage.setItem("highScore", JSON.stringify(highScoreList));
+    displayHighScores();
+}
+
+function displayHighScores() {
+    highScoreTable.style.display = "block";
+
+    highScoreList.sort((a, b) => b.score - a.score);
+
+    for (var i = 0; i < highScoreList.length; i++) {
+        let scoreTableRow = highScoreList[i];
+
+        let row = document.createElement("li");
+        row.textContent = scoreTableRow.name + " " + scoreTableRow.score;
+        row.setAttribute("data-index", i);
+
+        highScoreTable.appendChild(row);
+    }
 }
 
 // todo: save on enter

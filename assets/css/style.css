@@ -26,6 +26,10 @@ form {
     float: right;
 }
 
+li {
+    list-style-type: decimal;
+}
+
 nav ul {
     list-style-type: none;
     font-size: 20px;
