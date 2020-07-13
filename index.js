@@ -1,13 +1,13 @@
 const challenges = [
     {
-        question: "Inside which HTML element do we put the JavaScript?",
+        question: "Inside which HTML element do you useto put the JavaScript?",
         answers: [
             "<script>", "<javascript>", "<scripting>", "<js>"
         ],
         correctAnswer: 0
     },
     {
-        question: "Where is the correct place to insert a JavaScript?",
+        question: "Where is the correct place to insert the JavaScript file?",
         answers: [
             "The <head> section", "The <body> section", "Both the <head> section and <body> section are correct"
         ],
@@ -23,14 +23,14 @@ const challenges = [
     {
         question: "Which one of the following is correct?",
         answers: [
-            "i =+ 1;", "i = i++1;", "+i+;", "i += 1;"
+            "i =+ 1", "i = i++1;", "+i+;", "i += 1;"
         ],
         correctAnswer: 3
     },
     {
         question: "Which array method sorts the elements of an array?",
         answers: [
-            "sort()", "changeOrder(order)", "order()", "None of the above methods"
+            "sort()", "changeOrder(order)", "order()", "None of the others"
         ],
         correctAnswer: 0
     },
@@ -42,14 +42,14 @@ const challenges = [
         correctAnswer: 2
     },
     {
-        question: "Which of the following events occurs when the user clicks on an HTML element?",
+        question: "Which of the following event occurs when the user clicks on an HTML element?",
         answers: [
-            "onchange;", "onclick", "onmouseover", "onmouseclick"
+            "onchange", "onclick", "onmouseover", "onmouseclick"
         ],
         correctAnswer: 1
     },
     {
-        question: "How do you get the DOM element with id in JavaScript?",
+        question: "How do you get the DOM element by id in JavaScript?",
         answers: [
             "window.getElementById(...)", "document.getElementById(...)", "page.getElementById(...)", "document.innerHTML.getElementById(...)"
         ],
@@ -58,22 +58,29 @@ const challenges = [
     {
         question: "How do you create a new function in JavaScript?",
         answers: [
-            "onchange;", "onclick", "onmouseover", "onmouseclick"
-        ],
-        correctAnswer: 1
-    },
-    {
-        question: "Which of the following events occurs when the user clicks on an HTML element?",
-        answers: [
             "function = myFunction() {}", "function:myFunction() {}", "new.function() {}", "function myFunction() {}"
         ],
         correctAnswer: 3
     },
+    {
+        question: "Can you set the style of an HTML tag by using JavaScript?",
+        answers: [
+            "yes","no"
+        ],
+        correctAnswer: 0
+    },
 
 ]
 
+let secondsLeft = 120;
+let started = false;
+let timerInterval;
+let score = 0;
+let highScoreList = JSON.parse(localStorage.getItem("highScore")) || [];
+
 document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
+countDownElement.textContent = getFormattedTime(secondsLeft);
 const userInput = document.getElementById("userInput");
 hideElement(userInput);
 document.getElementById("inputForm").addEventListener("submit", saveHighScore);
@@ -82,13 +89,6 @@ const highScoreTable = document.getElementById("highScoreTable");
 hideElement(highScoreTable);
 document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
 document.getElementById("clearScores").addEventListener("click", clearHighScores);
-
-let secondsLeft = 120;
-let started = false;
-let timerInterval;
-let score = 0;
-
-let highScoreList = JSON.parse(localStorage.getItem("highScore")) || [];
 
 function startGame() {
     if (started === false) {
@@ -101,7 +101,7 @@ function startGame() {
         timerInterval = setInterval(function () {
             if (secondsLeft > 0) {
                 secondsLeft--;
-                countDownElement.textContent = secondsLeft;
+                countDownElement.textContent = getFormattedTime(secondsLeft);
                 if (secondsLeft <= 10) {
                     countDownElement.style.color = "red";
                 }
@@ -110,6 +110,22 @@ function startGame() {
                 gameOver();
             }
         }, 1000);
+    }
+}
+
+function getFormattedTime(seconds) {
+    const minutesLeft = Math.floor(seconds / 60);
+    const secondsLeft = seconds % 60;
+
+    return getFormattedNumber(minutesLeft) + ":" + getFormattedNumber(secondsLeft);
+}
+
+function getFormattedNumber(number) {
+    if (number < 10) {
+        return "0" + number;
+    }
+    else {
+        return number;
     }
 }
 
