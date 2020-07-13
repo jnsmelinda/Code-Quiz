@@ -10,6 +10,7 @@ document.getElementById("toggleScores").addEventListener("click", toggleHighScor
 document.getElementById("clearScores").addEventListener("click", clearHighScores);
 document.getElementById("inputForm").addEventListener("submit", saveHighScore);
 document.getElementById("saveButton").addEventListener("click", saveHighScore);
+document.getElementById("restart").addEventListener("click", restart);
 
 const countDownElement = document.getElementById("countDown");
 countDownElement.textContent = getFormattedTime(secondsLeft);
@@ -176,4 +177,8 @@ function shuffle(array) {
         array[i] = array[j];
         array[j] = temp;
     }
+}
+
+function restart() {
+    window.location.reload();
 }
