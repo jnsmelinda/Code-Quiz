@@ -1,6 +1,6 @@
 const challenges = [
     {
-        question: "Inside which HTML element do you useto put the JavaScript?",
+        question: "Inside which HTML element do you put the JavaScript file?",
         answers: [
             "<script>", "<javascript>", "<scripting>", "<js>"
         ],
