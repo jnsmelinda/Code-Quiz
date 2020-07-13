@@ -27,7 +27,7 @@
         </nav>
     </header>
     <main>
-        <section>
+        <section id="description">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <div class="row">
@@ -37,7 +37,11 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p id="rules">When you click the start button the timer starts and you are presented with a series of question. When you answer a question incorrectly 10 seconds are subtracted from the clock. When all questions are answered or the timer reaches 0 the game is over and you can save your name and score.
+                            <p id="rules">When you click the start button the timer starts and you are presented with a
+                                series of question. You have 2 minutes to answer the questions. If a question is
+                                answered incorrectly 10 seconds are subtracted
+                                from the clock. When all questions are answered or the timer reaches 0 the game is over
+                                and you can save your name and score.
                             </p>
                         </div>
                     </div>
@@ -50,13 +54,11 @@
             </div>
             </div>
         </section>
-        <section>
-            <article>
-                <h2 id="question"></h2>
-                <div id="buttons"></div>
-                <h3 id="score"></h3>
-                <p id="result"></p>
-            </article>
+        <section id="game">
+            <h2 id="question"></h2>
+            <div id="buttons"></div>
+            <h3 id="score"></h3>
+            <p id="result"></p>
         </section>
         <section id="userInput">
             <form id="inputForm">
@@ -66,12 +68,15 @@
                     <button type="button" class="btn btn-primary" id="saveButton">Save</button>
                 </div>
             </form>
-        </section>
+        </section id="scores">
         <section id="highScoreTable">
             <h3 id="highScoreTitle">HighScores</h3>
             <div id="highScores"></div>
         </section>
     </main>
+    <footer class="footer mt-auto py-3">
+        <span class="text-muted">© 2020 Melinda Ivanov</span>
+    </footer>
     <script src="./index.js"></script>
 </body>
 
