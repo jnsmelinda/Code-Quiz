@@ -45,10 +45,6 @@ form {
     float: right;
 }
 
-#userInput {
-    display: "none";
-}
-
-#highScoreTable{
-    display: "none";
+#userInput, #highScoreTable {
+    display: none;
 }

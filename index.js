@@ -81,11 +81,9 @@ document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
 countDownElement.textContent = getFormattedTime(secondsLeft);
 const userInput = document.getElementById("userInput");
-hideElement(userInput);
 document.getElementById("inputForm").addEventListener("submit", saveHighScore);
 const saveButton = document.getElementById("saveButton").addEventListener("click", saveHighScore);
 const highScoreTable = document.getElementById("highScoreTable");
-hideElement(highScoreTable);
 document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
 document.getElementById("clearScores").addEventListener("click", clearHighScores);
 
