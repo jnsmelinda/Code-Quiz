@@ -24,8 +24,9 @@ const challenges = [
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
-let highScoreInput = document.getElementById("currentScore");
-highScoreInput.style.display = "none";
+let userInput = document.getElementById("userInput");
+hideElement(userInput);
+document.getElementById("inputForm").addEventListener("submit", saveHighScore);
 let saveButton = document.getElementById("saveButton").addEventListener("click", saveHighScore);
 let highScoreTable = document.getElementById("highScoreTable");
 highScoreTable.style.display = "none";
@@ -66,7 +67,6 @@ function displayChallenge(challengeIndex) {
     const challenge = challenges[challengeIndex];
     document.getElementById("question").textContent = challenge.question;
 
-
     for (let i = 0; i < challenge.answers.length; i++) {
         const button = document.createElement("button");
         button.id = "answer-" + i;
@@ -103,7 +103,7 @@ function gameOver() {
     countDownElement.textContent = "0";
     resetChallenge();
     displayScore();
-    displayScoreInput();
+    showBlockElement(userInput);
 }
 
 function displayScore() {
@@ -115,25 +115,26 @@ function resetChallenge() {
     document.getElementById("question").innerHTML = "";
 }
 
-function displayScoreInput() {
-    highScoreInput.style.display = "block";
-}
-
 function saveHighScore(event) {
     event.preventDefault();
-    // console.log(event);
+    const username = document.getElementById("playerName").value.trim();
 
-    let highScoreItem = {
-        name: document.getElementById("playerName").value.trim(),
-        score: score
+    if (username !== "") {
+        // console.log(event);
+
+        let highScoreItem = {
+            name: username,
+            score: score
+        }
+
+        highScoreList.push(highScoreItem);
+        localStorage.setItem("highScore", JSON.stringify(highScoreList));
+
+        hideElement(userInput);
+
+        renderHighScores();
+        showBlockElement(highScoreTable);
     }
-
-    highScoreList.push(highScoreItem);
-    localStorage.setItem("highScore", JSON.stringify(highScoreList));
-
-    renderHighScores();
-    showBlockElement(highScoreTable);
-
 }
 
 function renderHighScores() {
@@ -183,5 +184,3 @@ function showBlockElement(element) {
 function hideElement(element) {
     element.style.display = "none";
 }
-
-// todo: save on enter
