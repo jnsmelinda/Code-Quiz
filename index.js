@@ -1,13 +1,13 @@
 const challenges = [
     {
-        question: "What HTML element do we use to import the JavaScript?",
+        question: "What HTML element do we use to import JavaScript?",
         answers: [
             "<script>", "<javascript>", "<scripting>", "<js>"
         ],
         correctAnswer: 0
     },
     {
-        question: "Where is the correct place to insert the JavaScript?",
+        question: "Where is the correct place to insert JavaScript?",
         answers: [
             "The <head> section", "The <body> section", "Both the <head> section and <body> section are correct"
         ],
