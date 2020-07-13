@@ -112,6 +112,7 @@ function saveHighScore(event) {
         };
 
         highScoreList.push(highScoreItem);
+        highScoreList.sort((a, b) => b.score - a.score);
         localStorage.setItem("highScore", JSON.stringify(highScoreList));
 
         hideElement(userInput);
@@ -125,7 +126,6 @@ function renderHighScores() {
     const highScoresElement = document.getElementById("highScores");
     highScoresElement.innerHTML = "";
 
-    highScoreList.sort((a, b) => b.score - a.score);
     for (let i = 0; i < highScoreList.length; i++) {
         const scoreTableRow = highScoreList[i];
 
