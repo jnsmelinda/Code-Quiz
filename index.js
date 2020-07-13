@@ -1,25 +1,75 @@
 const challenges = [
     {
-        question: "123?",
+        question: "Inside which HTML element do we put the JavaScript?",
         answers: [
-            "a", "b", "c", "d", "e"
+            "<script>", "<javascript>", "<scripting>", "<js>"
+        ],
+        correctAnswer: 0
+    },
+    {
+        question: "Where is the correct place to insert a JavaScript?",
+        answers: [
+            "The <head> section", "The <body> section", "Both the <head> section and <body> section are correct"
         ],
         correctAnswer: 2
     },
     {
-        question: "abc?",
+        question: "How can you detect the application name of the client’s browser?",
         answers: [
-            "1", "2", "3", "4"
+            "navigator.appName", "navigator.browserName", "browser.appName", "browser.name"
         ],
         correctAnswer: 0
     },
     {
-        question: "hgf?",
+        question: "Which one of the following is correct?",
         answers: [
-            "#", "@", "!", "%"
+            "i =+ 1;", "i = i++1;", "+i+;", "i += 1;"
+        ],
+        correctAnswer: 3
+    },
+    {
+        question: "Which array method sorts the elements of an array?",
+        answers: [
+            "sort()", "changeOrder(order)", "order()", "None of the above methods"
         ],
         correctAnswer: 0
-    }
+    },
+    {
+        question: "How do you open a new window with JavaScript?",
+        answers: [
+            "window.new(...);", "open(new window());", "window.open(...);", "indow.open_new(...);"
+        ],
+        correctAnswer: 2
+    },
+    {
+        question: "Which of the following events occurs when the user clicks on an HTML element?",
+        answers: [
+            "onchange;", "onclick", "onmouseover", "onmouseclick"
+        ],
+        correctAnswer: 1
+    },
+    {
+        question: "How do you get the DOM element with id in JavaScript?",
+        answers: [
+            "window.getElementById(...)", "document.getElementById(...)", "page.getElementById(...)", "document.innerHTML.getElementById(...)"
+        ],
+        correctAnswer: 1
+    },
+    {
+        question: "How do you create a new function in JavaScript?",
+        answers: [
+            "onchange;", "onclick", "onmouseover", "onmouseclick"
+        ],
+        correctAnswer: 1
+    },
+    {
+        question: "Which of the following events occurs when the user clicks on an HTML element?",
+        answers: [
+            "function = myFunction() {}", "function:myFunction() {}", "new.function() {}", "function myFunction() {}"
+        ],
+        correctAnswer: 3
+    },
+
 ]
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
@@ -33,7 +83,7 @@ hideElement(highScoreTable);
 document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
 document.getElementById("clearScores").addEventListener("click", clearHighScores);
 
-let secondsLeft = 10;
+let secondsLeft = 120;
 let started = false;
 let timerInterval;
 let score = 0;
@@ -52,7 +102,7 @@ function startGame() {
             if (secondsLeft > 0) {
                 secondsLeft--;
                 countDownElement.textContent = secondsLeft;
-                if (secondsLeft <= 5) {
+                if (secondsLeft <= 10) {
                     countDownElement.style.color = "red";
                 }
             }
@@ -85,7 +135,7 @@ function markAnswer(challengeIndex, answerIndex) {
     }
     else {
         resultOfPrevQuestion.textContent = "Previous: Incorrect";
-        secondsLeft -= 3;
+        secondsLeft -= 10;
     }
 
     challengeIndex++;
