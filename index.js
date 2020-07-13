@@ -5,14 +5,15 @@ let score = 0;
 let highScoreList = JSON.parse(localStorage.getItem("highScore")) || [];
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
+document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
+document.getElementById("clearScores").addEventListener("click", clearHighScores);
+document.getElementById("inputForm").addEventListener("submit", saveHighScore);
+document.getElementById("saveButton").addEventListener("click", saveHighScore);
+
 const countDownElement = document.getElementById("countDown");
 countDownElement.textContent = getFormattedTime(secondsLeft);
 const userInput = document.getElementById("userInput");
-document.getElementById("inputForm").addEventListener("submit", saveHighScore);
-document.getElementById("saveButton").addEventListener("click", saveHighScore);
 const highScoreTable = document.getElementById("highScoreTable");
-document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
-document.getElementById("clearScores").addEventListener("click", clearHighScores);
 
 function startGame() {
     if (started === false) {
@@ -20,7 +21,7 @@ function startGame() {
         hideHighScoreTable();
         document.getElementById("startQuiz").remove();
 
-        displayChallenge(0);
+        displayChallenge();
 
         timerInterval = setInterval(function() {
             if (secondsLeft > 0) {
@@ -51,7 +52,7 @@ function getFormattedNumber(number) {
     }
 }
 
-function displayChallenge(challengeIndex) {
+function displayChallenge(challengeIndex = 0) {
     const challenge = challenges[challengeIndex];
     document.getElementById("question").textContent = challenge.question;
 
@@ -75,12 +76,11 @@ function markAnswer(challengeIndex, answerIndex) {
         secondsLeft -= 10;
     }
 
-    challengeIndex++;
     resetChallenge();
-    if (challengeIndex === challenges.length) {
+    if (challengeIndex === challenges.length - 1) {
         gameOver();
     } else {
-        displayChallenge(challengeIndex);
+        displayChallenge(challengeIndex + 1);
     }
 }
 
