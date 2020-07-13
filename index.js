@@ -1,13 +1,13 @@
 const challenges = [
     {
-        question: "Inside which HTML element do you put the JavaScript file?",
+        question: "What HTML element do we use to import the JavaScript?",
         answers: [
             "<script>", "<javascript>", "<scripting>", "<js>"
         ],
         correctAnswer: 0
     },
     {
-        question: "Where is the correct place to insert the JavaScript file?",
+        question: "Where is the correct place to insert the JavaScript?",
         answers: [
             "The <head> section", "The <body> section", "Both the <head> section and <body> section are correct"
         ],
@@ -49,7 +49,7 @@ const challenges = [
         correctAnswer: 1
     },
     {
-        question: "How do you get the DOM element by id in JavaScript?",
+        question: "How do you get a DOM element by id in JavaScript?",
         answers: [
             "window.getElementById(...)", "document.getElementById(...)", "page.getElementById(...)", "document.innerHTML.getElementById(...)"
         ],
@@ -58,7 +58,7 @@ const challenges = [
     {
         question: "How do you create a new function in JavaScript?",
         answers: [
-            "function = myFunction() {}", "function:myFunction() {}", "new.function() {}", "function myFunction() {}"
+            "myFunction() {}", "function:myFunction() {}", "new.function() {}", "function myFunction() {}"
         ],
         correctAnswer: 3
     },
@@ -69,7 +69,6 @@ const challenges = [
         ],
         correctAnswer: 0
     },
-
 ]
 
 let secondsLeft = 120;
