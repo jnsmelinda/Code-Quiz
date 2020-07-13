@@ -24,7 +24,7 @@ function startGame() {
 
         displayChallenge();
 
-        timerInterval = setInterval(function () {
+        timerInterval = setInterval(function() {
             if (secondsLeft > 0) {
                 secondsLeft--;
                 countDownElement.textContent = getFormattedTime(secondsLeft);
