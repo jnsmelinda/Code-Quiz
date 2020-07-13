@@ -26,11 +26,11 @@ document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
 let highScoreInput = document.getElementById("currentScore");
 highScoreInput.style.display = "none";
-let saveButton = document.getElementById("saveButton").addEventListener("click", saveScore);
+let saveButton = document.getElementById("saveButton").addEventListener("click", saveHighScore);
 let highScoreTable = document.getElementById("highScoreTable");
 highScoreTable.style.display = "none";
-document.getElementById("showScores").addEventListener("click", displayHighScores);
-// document.getElementById("showScores").addEventListener("click", highScores);
+document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
+document.getElementById("clearScores").addEventListener("click", clearHighScores);
 
 let secondsLeft = 10;
 let started = false;
@@ -42,8 +42,7 @@ let highScoreList = JSON.parse(localStorage.getItem("highScore")) || [];
 function startGame() {
     if (started === false) {
         started = true;
-        highScoreTable.style.display = "none";
-        highScoreTable.innerHTML = "";
+        hideHighScoreTable();
         document.getElementById("startQuiz").remove();
 
         displayChallenge(0);
@@ -120,44 +119,69 @@ function displayScoreInput() {
     highScoreInput.style.display = "block";
 }
 
-function saveScore(event) {
+function saveHighScore(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
 
-    let player = {
+    let highScoreItem = {
         name: document.getElementById("playerName").value.trim(),
         score: score
     }
 
-    highScoreList.push(player);
+    highScoreList.push(highScoreItem);
     localStorage.setItem("highScore", JSON.stringify(highScoreList));
-    displayHighScores();
+
+    renderHighScores();
+    showBlockElement(highScoreTable);
+
 }
 
-function displayHighScores() {
+function renderHighScores() {
+    let highScoresElement = document.getElementById("highScores");
+    highScoresElement.innerHTML = "";
+
+    highScoreList.sort((a, b) => b.score - a.score);
+    for (var i = 0; i < highScoreList.length; i++) {
+        let scoreTableRow = highScoreList[i];
+
+        let row = document.createElement("li");
+        row.textContent = scoreTableRow.name + " " + scoreTableRow.score;
+        row.setAttribute("data-index", i);
+
+        highScoresElement.appendChild(row);
+    }
+}
+
+function toggleHighScoreTable() {
     if (highScoreTable.style.display === "none") {
-        highScoreTable.style.display = "block";
-        highScoreList.sort((a, b) => b.score - a.score);
-
-        let highScoreTitle = document.createElement("h3");
-        highScoreTitle.textContent = "High Score Table";
-
-        for (var i = 0; i < highScoreList.length; i++) {
-            let scoreTableRow = highScoreList[i];
-
-            let row = document.createElement("li");
-            row.textContent = scoreTableRow.name + " " + scoreTableRow.score;
-            row.setAttribute("data-index", i);
-
-            highScoreTable.appendChild(row);
-        }
-
-        highScoreTable.prepend(highScoreTitle);
+        showHighScoreTable();
     }
     else {
-        highScoreTable.style.display = "none";
-        highScoreTable.innerHTML = "";
+        hideHighScoreTable();
     }
+}
+
+function showHighScoreTable() {
+    renderHighScores();
+    showBlockElement(highScoreTable);
+}
+
+function hideHighScoreTable() {
+    hideElement(highScoreTable);
+}
+
+function clearHighScores() {
+    highScoreList = [];
+    localStorage.clear();
+    renderHighScores();
+}
+
+function showBlockElement(element) {
+    element.style.display = "block";
+}
+
+function hideElement(element) {
+    element.style.display = "none";
 }
 
 // todo: save on enter

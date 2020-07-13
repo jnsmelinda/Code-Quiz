@@ -17,7 +17,12 @@
                 Time left: <span id="countDown">10</span>
             </div>
             <ul>
-                <button type="button" class="btn btn-primary" id="showScores">HighScores</button>
+                <li>
+                    <button type="button" class="btn btn-primary" id="toggleScores">HighScores</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-primary" id="clearScores">Clear HighScores</button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -62,6 +67,8 @@
             </form>
         </section>
         <section id="highScoreTable">
+            <h3 id="highScoreTitle">HighScores</h3>
+            <div id="highScores"></div>
         </section>
     </main>
     <script src="./quiz.js"></script>
