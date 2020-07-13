@@ -29,7 +29,7 @@ hideElement(userInput);
 document.getElementById("inputForm").addEventListener("submit", saveHighScore);
 let saveButton = document.getElementById("saveButton").addEventListener("click", saveHighScore);
 let highScoreTable = document.getElementById("highScoreTable");
-highScoreTable.style.display = "none";
+hideElement(highScoreTable);
 document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
 document.getElementById("clearScores").addEventListener("click", clearHighScores);
 
