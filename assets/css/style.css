@@ -11,6 +11,22 @@ p {
     font-size: 15px;
 }
 
+nav ul {
+    list-style-type: none;
+    font-size: 20px;
+    padding-top: 15px;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+li {
+    list-style-type: decimal;
+}
+
 form {
     width: 200px;
     display: inline-block;
@@ -29,18 +45,10 @@ form {
     float: right;
 }
 
-li {
-    list-style-type: decimal;
+#userInput {
+    display: "none";
 }
 
-nav ul {
-    list-style-type: none;
-    font-size: 20px;
-    padding-top: 15px;
-    margin-right: 20px;
-}
-
-nav ul li {
-    display: inline-block;
-    margin-left: 25px;
+#highScoreTable{
+    display: "none";
 }
