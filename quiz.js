@@ -24,11 +24,11 @@ const challenges = [
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
 const countDownElement = document.getElementById("countDown");
-let userInput = document.getElementById("userInput");
+const userInput = document.getElementById("userInput");
 hideElement(userInput);
 document.getElementById("inputForm").addEventListener("submit", saveHighScore);
-let saveButton = document.getElementById("saveButton").addEventListener("click", saveHighScore);
-let highScoreTable = document.getElementById("highScoreTable");
+const saveButton = document.getElementById("saveButton").addEventListener("click", saveHighScore);
+const highScoreTable = document.getElementById("highScoreTable");
 hideElement(highScoreTable);
 document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
 document.getElementById("clearScores").addEventListener("click", clearHighScores);
@@ -78,7 +78,7 @@ function displayChallenge(challengeIndex) {
 }
 
 function markAnswer(challengeIndex, answerIndex) {
-    let resultOfPrevQuestion = document.getElementById("result");
+    const resultOfPrevQuestion = document.getElementById("result");
     if (challenges[challengeIndex].correctAnswer === answerIndex) {
         resultOfPrevQuestion.textContent = "Previous: Correct";
         score++;
@@ -120,9 +120,7 @@ function saveHighScore(event) {
     const username = document.getElementById("playerName").value.trim();
 
     if (username !== "") {
-        // console.log(event);
-
-        let highScoreItem = {
+        const highScoreItem = {
             name: username,
             score: score
         }
@@ -138,14 +136,14 @@ function saveHighScore(event) {
 }
 
 function renderHighScores() {
-    let highScoresElement = document.getElementById("highScores");
+    const highScoresElement = document.getElementById("highScores");
     highScoresElement.innerHTML = "";
 
     highScoreList.sort((a, b) => b.score - a.score);
-    for (var i = 0; i < highScoreList.length; i++) {
-        let scoreTableRow = highScoreList[i];
+    for (let i = 0; i < highScoreList.length; i++) {
+        const scoreTableRow = highScoreList[i];
 
-        let row = document.createElement("li");
+        const row = document.createElement("li");
         row.textContent = scoreTableRow.name + " " + scoreTableRow.score;
         row.setAttribute("data-index", i);
 
