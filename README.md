@@ -24,7 +24,7 @@ input demo:
 - [Github Pages](https://pages.github.com)
 
 ## Steps of developement
-- creatiin project files
+- creatin project files
 - desingning project
 - create .editorconfig
 - creating timer
@@ -40,8 +40,5 @@ input demo:
 - adding footer
 - refactoring and cleanup
 - readme
-
-## Others
-Original files and desing are from the [University of Washington coding bootcamp](https://bootcamp.uw.edu).
 
 © 2020 Melinda Ivanov
