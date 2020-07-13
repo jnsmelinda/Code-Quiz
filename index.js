@@ -2,74 +2,101 @@ const challenges = [
     {
         question: "What HTML element do we use to import JavaScript?",
         answers: [
-            "<script>", "<javascript>", "<scripting>", "<js>"
+            "<script>",
+            "<javascript>",
+            "<scripting>",
+            "<js>"
         ],
         correctAnswer: 0
     },
     {
         question: "Where is the correct place to insert JavaScript?",
         answers: [
-            "The <head> section", "The <body> section", "Both the <head> section and <body> section are correct"
+            "The <head> section",
+            "The <body> section",
+            "Both the <head> section and <body> section are correct"
         ],
         correctAnswer: 2
     },
     {
         question: "How can you detect the application name of the client’s browser?",
         answers: [
-            "navigator.appName", "navigator.browserName", "browser.appName", "browser.name"
+            "navigator.appName",
+            "navigator.browserName",
+            "browser.appName",
+            "browser.name"
         ],
         correctAnswer: 0
     },
     {
         question: "Which one of the following is correct?",
         answers: [
-            "i =+ 1", "i = i++1;", "+i+;", "i += 1;"
+            "i =+ 1",
+            "i = i++1;",
+            "+i+;",
+            "i += 1;"
         ],
         correctAnswer: 3
     },
     {
         question: "Which array method sorts the elements of an array?",
         answers: [
-            "sort()", "changeOrder(order)", "order()", "None of the others"
+            "sort()",
+            "changeOrder(order)",
+            "order()",
+            "None of the others"
         ],
         correctAnswer: 0
     },
     {
         question: "How do you open a new window with JavaScript?",
         answers: [
-            "window.new(...);", "open(new window());", "window.open(...);", "indow.open_new(...);"
+            "window.new(...);",
+            "open(new window());",
+            "window.open(...);",
+            "window.open_new(...);"
         ],
         correctAnswer: 2
     },
     {
         question: "Which of the following event occurs when the user clicks on an HTML element?",
         answers: [
-            "onchange", "onclick", "onmouseover", "onmouseclick"
+            "onchange",
+            "onclick",
+            "onmouseover",
+            "onmouseclick"
         ],
         correctAnswer: 1
     },
     {
         question: "How do you get a DOM element by id in JavaScript?",
         answers: [
-            "window.getElementById(...)", "document.getElementById(...)", "page.getElementById(...)", "document.innerHTML.getElementById(...)"
+            "window.getElementById(...)",
+            "document.getElementById(...)",
+            "page.getElementById(...)",
+            "document.innerHTML.getElementById(...)"
         ],
         correctAnswer: 1
     },
     {
         question: "How do you create a new function in JavaScript?",
         answers: [
-            "myFunction() {}", "function:myFunction() {}", "new.function() {}", "function myFunction() {}"
+            "myFunction() {}",
+            "function:myFunction() {}",
+            "new.function() {}",
+            "function myFunction() {}"
         ],
         correctAnswer: 3
     },
     {
         question: "Can you set the style of an HTML tag by using JavaScript?",
         answers: [
-            "yes","no"
+            "yes",
+            "no"
         ],
         correctAnswer: 0
     },
-]
+];
 
 let secondsLeft = 120;
 let started = false;
@@ -82,7 +109,7 @@ const countDownElement = document.getElementById("countDown");
 countDownElement.textContent = getFormattedTime(secondsLeft);
 const userInput = document.getElementById("userInput");
 document.getElementById("inputForm").addEventListener("submit", saveHighScore);
-const saveButton = document.getElementById("saveButton").addEventListener("click", saveHighScore);
+document.getElementById("saveButton").addEventListener("click", saveHighScore);
 const highScoreTable = document.getElementById("highScoreTable");
 document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
 document.getElementById("clearScores").addEventListener("click", clearHighScores);
@@ -95,15 +122,14 @@ function startGame() {
 
         displayChallenge(0);
 
-        timerInterval = setInterval(function () {
+        timerInterval = setInterval(function() {
             if (secondsLeft > 0) {
                 secondsLeft--;
                 countDownElement.textContent = getFormattedTime(secondsLeft);
                 if (secondsLeft <= 10) {
                     countDownElement.style.color = "red";
                 }
-            }
-            else {
+            } else {
                 gameOver();
             }
         }, 1000);
@@ -120,8 +146,7 @@ function getFormattedTime(seconds) {
 function getFormattedNumber(number) {
     if (number < 10) {
         return "0" + number;
-    }
-    else {
+    } else {
         return number;
     }
 }
@@ -145,8 +170,7 @@ function markAnswer(challengeIndex, answerIndex) {
     if (challenges[challengeIndex].correctAnswer === answerIndex) {
         resultOfPrevQuestion.textContent = "Previous: Correct";
         score++;
-    }
-    else {
+    } else {
         resultOfPrevQuestion.textContent = "Previous: Incorrect";
         secondsLeft -= 10;
     }
@@ -155,8 +179,7 @@ function markAnswer(challengeIndex, answerIndex) {
     resetChallenge();
     if (challengeIndex === challenges.length) {
         gameOver();
-    }
-    else {
+    } else {
         displayChallenge(challengeIndex);
     }
 }
@@ -186,7 +209,7 @@ function saveHighScore(event) {
         const highScoreItem = {
             name: username,
             score: score
-        }
+        };
 
         highScoreList.push(highScoreItem);
         localStorage.setItem("highScore", JSON.stringify(highScoreList));
@@ -217,8 +240,7 @@ function renderHighScores() {
 function toggleHighScoreTable() {
     if (highScoreTable.style.display === "none") {
         showHighScoreTable();
-    }
-    else {
+    } else {
         hideHighScoreTable();
     }
 }
