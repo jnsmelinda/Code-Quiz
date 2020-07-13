@@ -3,6 +3,7 @@ let started = false;
 let timerInterval;
 let score = 0;
 let highScoreList = JSON.parse(localStorage.getItem("highScore")) || [];
+shuffle(challenges);
 
 document.getElementById("startQuiz").addEventListener("click", startGame);
 document.getElementById("toggleScores").addEventListener("click", toggleHighScoreTable);
@@ -23,7 +24,7 @@ function startGame() {
 
         displayChallenge();
 
-        timerInterval = setInterval(function() {
+        timerInterval = setInterval(function () {
             if (secondsLeft > 0) {
                 secondsLeft--;
                 countDownElement.textContent = getFormattedTime(secondsLeft);
@@ -166,4 +167,13 @@ function showBlockElement(element) {
 
 function hideElement(element) {
     element.style.display = "none";
+}
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * i);
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
