@@ -48,3 +48,12 @@ form {
 #userInput, #highScoreTable {
     display: none;
 }
+
+#result {
+    font-style: italic;
+    font-weight: lighter;
+}
+
+#countDown {
+    font-weight: 500;
+}
