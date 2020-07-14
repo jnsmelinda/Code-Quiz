@@ -29,7 +29,7 @@ score table demo:
 - [Github Pages](https://pages.github.com)
 
 ## Steps of developement
-- creatin project files
+- creating project files
 - desingning project
 - create .editorconfig
 - creating timer
