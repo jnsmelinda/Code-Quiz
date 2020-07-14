@@ -11,7 +11,8 @@ quiz demo:
 save demo:
 ![Demo image](./assets/images/save.png)
 
-
+score table demo:
+![Demo image](./assets/images/scores.png)
 
 **Author:** Melinda Ivanov
 

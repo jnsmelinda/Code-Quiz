@@ -88,7 +88,7 @@ function markAnswer(challengeIndex, answerIndex) {
 
 function gameOver() {
     clearInterval(timerInterval);
-    countDownElement.textContent = "0";
+    countDownElement.textContent = "00:00";
     resetChallenge();
     displayScore();
     showBlockElement(userInput);
