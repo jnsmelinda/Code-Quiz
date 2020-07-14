@@ -56,7 +56,7 @@ function getFormattedNumber(number) {
 
 function displayChallenge(challengeIndex = 0) {
     const challenge = challenges[challengeIndex];
-    document.getElementById("question").textContent = challenge.question;
+    document.getElementById("question").textContent = (challengeIndex + 1) + ". " + challenge.question;
 
     for (let i = 0; i < challenge.answers.length; i++) {
         const button = document.createElement("button");
